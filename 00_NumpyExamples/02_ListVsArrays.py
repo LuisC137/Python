@@ -1,3 +1,10 @@
+"""
+	Author: Luis_C-137
+	Explore the advantages of each structure
+	This is just for practice purposes
+	This is NOT functional code
+"""
+
 
 import numpy as np
 
