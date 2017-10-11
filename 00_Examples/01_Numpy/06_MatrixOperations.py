@@ -12,7 +12,7 @@ A = np.array([[1,2],[3,4]])
 print(A)
 
 # Matrix inverse
-Ainv = np.linalg.in(A)
+Ainv = np.linalg.inv(A)
 print('The inverse is')
 print(Ainv)
 
@@ -36,7 +36,7 @@ print(a*b)
 # Calculate the dot product
 print('Dot prodcut')
 print(a.dot(b))
-print(a.inner(b))
+print(np.inner(a,b))
 
 # Calculate outer product
 print('Outer product')
@@ -53,17 +53,17 @@ print('For the Eigenvalues and Eigenvectors we will use the next matrix')
 print(X)
 
 # Calculate the covariance of a matrix
-conv = np.conv(X.T)	# To calculate the covariance we have 
+cov = np.cov(X.T)	# To calculate the covariance we have 
 					#		to use the Traspose
 print('We can calcualte the covariance')
-print('conv')
+print(cov)
 
 print('Finaly we calculate the eigen vector')
-aux = np.linalg.eigh(conv)	# we use eigh because it is only for 
+aux = np.linalg.eigh(cov)	# we use eigh because it is only for 
 							#		symetric and Midian matrixes
 print(aux)
 # We can also use eig method but it may be in a diferent order
-aux = np.linalg.eig(conv)
+aux = np.linalg.eig(cov)
 print(aux)
 
 
