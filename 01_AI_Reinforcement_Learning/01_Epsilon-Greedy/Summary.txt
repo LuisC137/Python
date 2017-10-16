@@ -1,0 +1,19 @@
+"""
+	Author: Luis_C-137
+	Explanaition of the epsilon greedy algorythm
+"""
+
+In reinforcement learning we either explore, wich is look for options for the system 
+to feed us or exploit wich implies to use the best known option at that time.
+
+The epsilon greedy algorythm ensures that we get a desiered rate between 
+the times we explore against the times we exploit.
+
+---------- Pseudo Code ----------
+
+epsilon_greedy = 10 or 5 tipicaly
+r = random
+if epsilon_greedy > r
+	exploit
+else
+	explore
