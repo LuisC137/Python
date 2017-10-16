@@ -1,4 +1,9 @@
-
+"""
+	Author: Luis_C-137
+	Using joins exmaple
+	This is just for practice purposes
+	This is NOT functional code
+"""
 import pandas as pd
 
 t1 = pd.read_csv('table1.csv')
