@@ -12,6 +12,7 @@
 import sys
 import math
 import pandas as pd 
+import numpy as np
 import tkinter as tk
 from tkinter import filedialog
 
@@ -30,24 +31,37 @@ def getCSVSource () :
 def dec2hex (row) :
 	return hex(int(row[1])).split('x')[-1]
 
+def secondComplement(hex) :
+	return hex
+
 def hex2verilog (row) :
-	return 'H[' + str(row.name) + "] = 32'h" + format(row[1], '08x')
+	if (row[1] < 0) :
+		hex = secondComplement(row[1])
+	
+	hex = format(row[1], '08x')
+	return 'H[' + str(row.name) + "] = 32'h" + hex
 
 def getFolderOfFile (path) :
-	return path[:path.rfind('\\') + 1]
+	if (path.find('\\') != -1) :
+		return path[:path.rfind('\\') + 1]
+	else :
+		return path[:path.rfind('/') + 1]
 
 csv_path = getCSVSource()
 floatArray = pd.read_csv(csv_path,header = None)
+floatArray = np.transpose(floatArray)
 
-floatArray[1] = floatArray[0] * (2**16)
-floatArray[1] = floatArray.apply(lambda row: math.floor(row[1]),axis=1)	#1
+floatArray[1] = floatArray[0] * (2**32)
+floatArray[1] = floatArray.apply(lambda row: math.floor(row[1]),
+										axis=1)	#1
 
 # Implementation of step #3 did not used step #2 due to format issues
 floatArray[2] = floatArray.apply(dec2hex,axis=1) #2
 
 floatArray[3] = floatArray.apply(hex2verilog,axis=1) #3
 
-print(floatArray.head())
+print(floatArray)
+print('Filter order: ' + str(int(floatArray.size / 4)))
 path = getFolderOfFile(csv_path) + "verilog_code.txt"
 file = open(path,'w') 
 file.write("\tinitial begin\n") 
