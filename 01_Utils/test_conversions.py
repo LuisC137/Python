@@ -18,3 +18,5 @@ class TestConversions(unittest.TestCase):
 # This is used to compile as a normal python program
 if __name__ == '__main__':
 	unittest.main()
+else:
+	print("Importing module {} may not be useful".format(__name__))
