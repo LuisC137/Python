@@ -11,7 +11,9 @@ import conversions as conv
 class TestConversions(unittest.TestCase):
 
 	def test_secondComplement(self):
-		self.assertEqual(conv.secondComplement(-12),0)
+		self.assertEqual(conv.secondComplement(15),"0000000F")
+		self.assertEqual(conv.secondComplement(0),"00000000")
+		self.assertEqual(conv.secondComplement(-15),"FFFFFFF1")
 
 # This is used to compile as a normal python program
 if __name__ == '__main__':
