@@ -31,14 +31,17 @@ def getCSVSource () :
 def dec2hex (row) :
 	return hex(int(row[1])).split('x')[-1]
 
-def secondComplement(hex) :
-	return hex
+def secondComplement(n) :
+	mask = int('11111111111111111111111111111111', 2)
+	if (n < 0) :
+		n = n ^ mask
+		n += 1
+		n *= -1
+	hex = format(n, '08X')
+	return hex;
 
 def hex2verilog (row) :
-	if (row[1] < 0) :
-		hex = secondComplement(row[1])
-	
-	hex = format(row[1], '08x')
+	hex = secondComplement(row[1])
 	return 'H[' + str(row.name) + "] = 32'h" + hex
 
 def getFolderOfFile (path) :
