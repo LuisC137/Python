@@ -63,7 +63,7 @@ floatArray[2] = floatArray.apply(dec2hex,axis=1) #2
 
 floatArray[3] = floatArray.apply(hex2verilog,axis=1) #3
 
-print(floatArray)
+print(floatArray.head())
 print('Filter order: ' + str(int(floatArray.size / 4)))
 path = getFolderOfFile(csv_path) + "verilog_code.txt"
 file = open(path,'w') 
