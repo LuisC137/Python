@@ -17,9 +17,9 @@ def getMarkets():
 def getActiveMarkets():
 	data = getMarkets()
 	active = []
-	for m in data:
+	for m in data["result"]:
 		if (m['IsActive']):
-			active.add(m)
+			active.append(m)
 	return active
 
 def printTicker(market):
@@ -38,8 +38,7 @@ def main():
 	print("And so it begins...\n\n\n")
 
 	marketList = getActiveMarkets()
-
-	for market in marketList['result']:
+	for market in marketList:
 		printTicker(market)
 	
 
